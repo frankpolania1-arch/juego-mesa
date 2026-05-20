@@ -10,9 +10,11 @@ public class UIPreguntaManager : MonoBehaviour
     public Button[] botonesOpciones;
     public Canvas canvas;
     private Pregunta preguntaActual;
+    public GameManager Gm;
     // Mensaje de Unity | 0 referencias
     void Awake()
     {
+        Gm.GetComponent<GameManager>();
         if (instance == null)
         {
             instance = this;
@@ -31,6 +33,13 @@ public class UIPreguntaManager : MonoBehaviour
         {
             PlayerManager.instancia.mover = true;
             canvas.gameObject.SetActive(false);
+
+
+            Gm.Puntuacion(true);
+
+
+
+
         }
         else
         {
@@ -38,6 +47,10 @@ public class UIPreguntaManager : MonoBehaviour
             PlayerManager.instancia.posicionPunto = 0;
             PlayerManager.instancia.mover = true;
             canvas.gameObject.SetActive(false);
+            Gm.Puntuacion(false);
+
+
+
         }
     }
     // 2 referencias
